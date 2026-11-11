@@ -110,7 +110,7 @@ The "Per lesson" line gives each lesson's correct multiple-choice answers out of
 
 On a pass, also add the line `**Skip quiz passed:** X/10 (DD-MM-YYYY)` under the title. It marks every lesson of the module as done, so their slides and exercises aren't required.
 
-**Not passed:** the module isn't skipped, and its module skip quiz isn't offered again. The learner continues lesson by lesson, in order, and at each lesson chooses again: learn it, or take its own skip quiz first (`teaching.md`, Step 3). The lesson skip quiz is an option, never a requirement. In standard and socratic style, suggest the lesson skip quiz only for lessons whose module-quiz questions were all answered correctly; suggest learning the others. Say this in the result message in those terms — not "a skip quiz for each lesson", which sounds mandatory.
+**Not passed:** the module isn't skipped, and its module skip quiz isn't offered again. The learner continues lesson by lesson, and at each lesson chooses again: learn it, or take its own skip quiz first (`teaching.md`, Step 3). The lesson skip quiz is an option, never a requirement. In standard and socratic style, suggest the lesson skip quiz only for lessons whose module-quiz questions were all answered correctly; suggest learning the others. Say this in the result message in those terms — not "a skip quiz for each lesson", which sounds mandatory.
 
 ---
 
@@ -156,4 +156,4 @@ Next recommended review: [date based on score — not for a skip quiz]
 
 ## Next Lesson Recommendation
 
-After saving the score, suggest the next lesson: always the first lesson in the course order that isn't complete (`order.md`). You may also load `~/skill-tutor-tutorials/topics/knowledge_map.md` and suggest a related earlier lesson for review.
+After saving the score, suggest the next lesson as `order.md` "Suggesting the next lesson" says (a started lesson that isn't complete first; otherwise the first incomplete lesson in the course order, and the learner may choose another). You may also load `~/skill-tutor-tutorials/topics/knowledge_map.md` and suggest a related earlier lesson for review.

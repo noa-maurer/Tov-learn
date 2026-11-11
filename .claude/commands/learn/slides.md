@@ -16,7 +16,7 @@ Slides Mode reads the course script verbatim — no Journey Format, no reformula
 
 If a lesson number was specified (e.g. `/learn slides 3.1`), load that lesson's script file.
 
-If no lesson number was given, use the current lesson already loaded in the session. If no lesson is active, ask the learner which lesson they want (lessons go in course order — `order.md`).
+If no lesson number was given, use the current lesson already loaded in the session. If no lesson is active, ask the learner which lesson they want (any lesson, but a started lesson is finished before a new one — `order.md`).
 
 Resolve the script path using the same priority as `teaching.md`:
 1. Check `./lessons/` at project root
@@ -32,7 +32,7 @@ Split the script by `[מעבר שקף]`.
 
 ## Step 1B — Learn the Lesson, or Quiz First
 
-The same choice as `teaching.md` Step 3, at the start of every lesson (not when switching into slides mode in the middle of a lesson, or coming back to a lesson whose learning already started — `teaching.md` Step 3): ask whether to learn the lesson or take its skip quiz first, with the same wording and rules, including what to suggest after a module skip quiz that wasn't passed. At the first lesson of a module, and only while no lesson of that module was started and its module skip quiz wasn't taken before (one attempt only), also offer the module skip quiz.
+The same choice as `teaching.md` Step 3, at the start of every lesson (not when switching into slides mode in the middle of a lesson, or coming back to a lesson whose learning already started — `teaching.md` Step 3): ask whether to learn the lesson or take its skip quiz first, with the same wording and rules, including what to suggest after a module skip quiz that wasn't passed. At the start of a lesson in a module where no lesson was started yet (any lesson of the module — lessons can be learned in any order), and only while no lesson of that module was started and its module skip quiz wasn't taken before (one attempt only), also offer the module skip quiz.
 
 - **Learn** → mark the lesson as taught (Step 1), continue with Step 2 and read all the slides.
 - **Quiz first** → follow `teaching.md` Step 3B — the quiz, pass mark 8, what to save and when, and the detailed explanations after a pass — with one difference for a score below 8: instead of teaching the weak sections in the Journey Format, read **only the slides behind the wrong answers**, verbatim, in the chat, one at a time. Don't launch the viewer — it plays the whole lesson. End the message with the review table with a short paragraph that says which slides you'll read and ends with: "כתבי **הבא** כדי להתקדם לשקף הבא, או **נתקעתי** אם משהו לא ברור." (adapt to `session.address` and `session.language`). Then follow the offer rule in Step 1. After the last of those slides, go to Step 5; only the exercises related to them are required.

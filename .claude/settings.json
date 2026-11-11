@@ -30,7 +30,7 @@
           {
             "type": "command",
             "command": "powershell.exe",
-            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-WindowStyle", "Hidden", "-File", "${CLAUDE_PROJECT_DIR}/.claude/scripts/check-lesson-order.ps1"]
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-WindowStyle", "Hidden", "-File", "${CLAUDE_PROJECT_DIR}/.claude/scripts/check-unfinished-lessons.ps1"]
           }
         ]
       }

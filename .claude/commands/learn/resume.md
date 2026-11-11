@@ -18,7 +18,7 @@ Compute today's date. Classify each lesson:
 - **Overdue** — next review date is before today
 - **Due today** — next review date is today
 - **In progress** — learning started but the lesson isn't complete (`order.md`) — not judged by score, since quizzes are optional
-- **Next new** — the first lesson in the course order that isn't complete (`order.md`): not started, slides not finished, or required exercises not done. Say which of these it is.
+- **Next new** — chosen as `order.md` "Suggesting the next lesson" says: a started lesson that isn't complete comes first (say what's missing: slides, or required exercises); otherwise the first lesson in the course order that isn't complete — and the learner may choose any other lesson that isn't complete.
 
 Check final project eligibility: learner is ready to start the final project if they have progress files for lessons in module 2 (any lesson 2.x), or have completed all lessons through 1.8.
 
@@ -68,7 +68,7 @@ What would you like to do?
 
 | Answer | Action |
 |--------|--------|
-| Picks a lesson number | Read `.claude/commands/learn/teaching.md` with that lesson (lessons go in course order — if an earlier lesson isn't complete, `order.md` applies) |
+| Picks a lesson number | Read `.claude/commands/learn/teaching.md` with that lesson (any lesson — but if a started lesson isn't complete, `order.md` applies) |
 | "review" / picks a due lesson | Read `.claude/commands/learn/teaching.md` with that lesson |
 | "project analysis" | Read `.claude/commands/learn/project-analysis.md` |
 | "final project" / "project" / picks 🏗️ | Read `.claude/commands/learn/project.md` |

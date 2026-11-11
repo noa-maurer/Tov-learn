@@ -84,6 +84,6 @@ Some exercises need an external service, tool, or API key. Before starting such 
 
 ---
 
-## Unfinished exercises from an earlier lesson
+## Unfinished exercises from a started lesson
 
-A lesson can't start while an earlier lesson's required exercises are incomplete. A hook notes this when the lesson starts; `order.md` says what to do (complete the remaining exercises following the rules above, then continue in order).
+Lessons can be learned in any order, but a new lesson can't start while a started lesson's slides or required exercises are incomplete. A hook notes this when the lesson starts; `order.md` says what to do (complete the remaining exercises following the rules above, then start the new lesson).

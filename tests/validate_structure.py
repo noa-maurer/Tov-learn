@@ -81,7 +81,7 @@ if teaching_path.exists():
         error("Regression: teaching.md is missing 'Step 5 — End of Lesson'")
 
 # 5. Regression guard: both lesson modes give exercises at the end of the lesson, follow the
-#    shared exercises rules, and save them where check-lesson-order.ps1 looks for them
+#    shared exercises rules, and save them where check-unfinished-lessons.ps1 looks for them
 for mod in ("teaching.md", "slides.md"):
     path = LEARN_COMMANDS / mod
     if path.exists():
@@ -94,13 +94,13 @@ for mod in ("teaching.md", "slides.md"):
             error(f"Regression: {mod} no longer follows the shared exercises rules (exercises.md)")
         if "**Exercises required:** yes" not in text:
             error(f"Regression: {mod} no longer marks finished lessons with '**Exercises required:** yes' "
-                  f"(check-lesson-order.ps1 tells new lessons from ones finished before the exercises rule)")
+                  f"(check-unfinished-lessons.ps1 tells new lessons from ones finished before the exercises rule)")
         if "Mark the lesson as taught under the exercises rule" not in text:
             error(f"Regression: {mod} no longer writes '**Exercises required:** yes' when the lesson starts "
-                  f"(check-lesson-order.ps1 tells new lessons from ones learned before the rules)")
+                  f"(check-unfinished-lessons.ps1 tells new lessons from ones learned before the rules)")
         if "Mark the lesson's slides as done" not in text:
             error(f"Regression: {mod} no longer saves 'Slides covered: all' before the exercises "
-                  f"(check-lesson-order.ps1 needs it to catch exercises left unfinished)")
+                  f"(check-unfinished-lessons.ps1 needs it to catch exercises left unfinished)")
         if "session.failed_skip_quiz" not in text:
             error(f"Regression: {mod} no longer limits exercises after a failed skip quiz")
         if "Quiz, mini project, or neither" not in text or "only the exercises are" not in text:
@@ -125,7 +125,7 @@ else:
     text = order_path.read_text(encoding="utf-8")
     for needed in ("**Skip quiz passed:**", "**Exercises required:** yes", "quiz module", "## רשימת שיעורים"):
         if needed not in text:
-            error(f"Regression: order.md no longer mentions '{needed}' (check-lesson-order.ps1 relies on it)")
+            error(f"Regression: order.md no longer mentions '{needed}' (check-unfinished-lessons.ps1 relies on it)")
 quiz_path = LEARN_COMMANDS / "quiz.md"
 if quiz_path.exists():
     text = quiz_path.read_text(encoding="utf-8")
@@ -141,7 +141,7 @@ if exercises_rules.exists():
                    "## After a failed skip quiz"):
         if needed not in text:
             error(f"Regression: exercises.md no longer defines '{needed}' "
-                  f"(check-lesson-order.ps1 and status.md rely on the tracking format)")
+                  f"(check-unfinished-lessons.ps1 and status.md rely on the tracking format)")
     # Paid-exercise flow: never wait for a mentor, never count a free trial as free, adapt before skipping
     if "**מדריך:**" in text or "contact the course mentor" in text:
         error("Regression: exercises.md paid-exercise flow waits for a mentor again (learning must never wait)")
@@ -170,8 +170,12 @@ if quiz_path.exists():
             error(f"Regression: quiz.md no longer says '{needed}'")
 if order_path.exists():
     text = order_path.read_text(encoding="utf-8")
-    if "only for a lesson the note says is **not started**" not in text:
+    if "only for a lesson that is not started" not in text:
         error("Regression: order.md offers the lesson skip quiz for a lesson whose learning already started")
+    if "Lessons can be learned in any order" not in text or "every lesson the learner already started is complete" not in text:
+        error("Regression: order.md no longer says 'finish what you started' (any order, started lessons first)")
+    if "slides aren't finished blocks a new lesson" not in text:
+        error("Regression: order.md no longer blocks a new lesson while a started lesson's slides are unfinished")
     if "having no lesson started yet" not in text:
         error("Regression: order.md offers the module skip quiz for a module whose lessons already started")
 if quiz_path.exists():
