@@ -24,7 +24,7 @@
 | Deploy | `.claude/commands/learn/deploy.md` | בחירת כלי פריסה (GitHub Pages / Cloudflare / Render / Vercel), CLI-first, תרומה ל-FAQ |
 | CLI-First (ref) | `.claude/commands/learn/cli-first.md` | עקרון משותף — העדפת CLI על דאשבורד; מודולים אחרים מפנים אליו |
 | Stuck | `.claude/commands/learn/stuck.md` | עזרה כשהלומד תקוע — לא הבין חומר / משהו לא עובד; מלמד איך לבקש עזרה טוב |
-| Lesson order (ref) | `.claude/commands/learn/order.md` | סיימו את מה שהתחלתם: אפשר ללמוד שיעורים בכל סדר, אבל שיעור חדש מתחיל רק כשכל שיעור שכבר התחיל הושלם (שקפים + תרגילים נדרשים) או עבר מבחן דילוג (שיעור / מודול); שיעורים שלא התחילו לא חוסמים |
+| Lesson order (ref) | `.claude/commands/learn/order.md` | בחירה חופשית, השלמה אמיתית: אפשר ללמוד שיעורים בכל סדר ולעזוב שיעור באמצע; שיעור נחשב הושלם רק אחרי שקפים + תרגילים נדרשים, או מבחן דילוג (שיעור / מודול); כשמתחילים שיעור ושיעור אחר שהתחיל לא הושלם ← תזכורת בשורה אחת, בלי חסימה |
 | Exercises (ref) | `.claude/commands/learn/exercises.md` | כללי תרגילים משותפים ל-teaching ו-slides: כל התרגילים לפני השיעור הבא, קובץ מעקב, תרגילים בתשלום (דרך חינמית ← גרסה מותאמת לכלים חינמיים ← רק אז דילוג ודגל למנחים; בלי לחכות למנחה, ניסיון חינם לא נחשב חינמי) |
 
 **Hooks** (`.claude/settings.json`, סקריפטים ב-`.claude/scripts/`):
@@ -33,7 +33,7 @@
 |------|--------|-------|
 | Stop | `auto-save-progress.ps1` | שמירת שיעור/שקף נוכחי (מצב שקפים) |
 | UserPromptSubmit | `detect-stuck.ps1` | הודעה כמו "לא הבנתי" / "לא עובד" ← הערה ל-Claude על `stuck.md` |
-| PostToolUse (Read) | `check-unfinished-lessons.ps1` | כש-Claude קורא סקריפט של שיעור (תחילת שיעור) ושיעור אחר שכבר התחיל לא הושלם ← הערה ל-Claude לפי `order.md` (בכל פעם שמתחילים שיעור חדש, בכל סשן, עד שהשיעורים שהתחילו הושלמו) |
+| PostToolUse (Read) | `check-unfinished-lessons.ps1` | כש-Claude קורא סקריפט של שיעור (תחילת שיעור) ושיעור אחר שכבר התחיל לא הושלם ← הערה ל-Claude, שמזכיר ללומד בשורה אחת לפי `order.md` (בלי חסימה; בכל פעם שמתחילים שיעור חדש, בכל סשן, כל עוד שיעור שהתחיל לא הושלם) |
 
 Hooks רצים ב-exec form לפי התיעוד (`"command": "powershell.exe"`, `"args": [..., "-File", "${CLAUDE_PROJECT_DIR}/..."]`). סקריפט עם טקסט בעברית נשמר ב-UTF-8 **עם BOM** (Windows PowerShell 5.1). הערות של hooks ל-Claude מנוסחות כעובדות, לא כפקודות (התיעוד מזהיר שניסוח פקודה עלול להפעיל הגנות prompt-injection).
 

@@ -8,7 +8,7 @@ Respond in `session.language` throughout. Address the learner using `session.add
 
 ## Principle
 
-**Every exercise of every lesson is done before moving on to the next lesson.** Exercises are not optional. After a failed skip quiz, only the exercises related to the sections the learner got wrong are required (see "After a failed skip quiz" below). The only other exception is an exercise that needs a paid resource that isn't provided and has no free way around it (see "Paid resources" below) — and even then it's skipped only after the free ways and an adapted version of the exercise were tried, and it's flagged for the mentors. Learning never waits for a mentor's answer.
+**Every lesson's exercises are part of the lesson, and Claude never skips them.** At the end of the slides, always give all the required exercises; a lesson is complete only when they're done (`order.md`). The learner may leave a lesson in the middle and come back later — the lesson then stays in progress — but Claude never ends a lesson or moves on without them. After a failed skip quiz, only the exercises related to the sections the learner got wrong are required (see "After a failed skip quiz" below). The only other exception is an exercise that needs a paid resource that isn't provided and has no free way around it (see "Paid resources" below) — and even then it's skipped only after the free ways and an adapted version of the exercise were tried, and it's flagged for the mentors. Learning never waits for a mentor's answer.
 
 ---
 
@@ -86,4 +86,4 @@ Some exercises need an external service, tool, or API key. Before starting such 
 
 ## Unfinished exercises from a started lesson
 
-Lessons can be learned in any order, but a new lesson can't start while a started lesson's slides or required exercises are incomplete. A hook notes this when the lesson starts; `order.md` says what to do (complete the remaining exercises following the rules above, then start the new lesson).
+The learner may leave a lesson before its exercises are done and start another one (`order.md`). The lesson then stays in progress, and a hook notes it whenever another lesson starts, so Claude reminds the learner in one line. When the learner comes back to it, continue from the first exercise that isn't recorded yet, following the rules above.

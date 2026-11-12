@@ -22,7 +22,7 @@ Respond in `session.language` throughout. Address the learner using `session.add
   2. Fallback: `exercises.md`
 - Progress file: `~/skill-tutor-tutorials/progress/lesson-{lesson_number}.md`
 
-Split the script into sections by `[מעבר שקף]`.
+Split the script into sections by `[מעבר שקף]`. In text for the learner, call each section a **שקף** (slide), numbered as in the script — the same word in every reply, as in the style descriptions below — never "חלק".
 
 ---
 
@@ -30,7 +30,7 @@ Split the script into sections by `[מעבר שקף]`.
 
 Greet the learner. State the lesson topic and number of sections. Give the greeting, the short intro and the "learn or quiz first" choice below in the same reply — don't announce what a later reply will contain.
 
-**If the learner already started learning this lesson** (its progress file has `**Exercises required:** yes`): this is a return to a lesson in progress, not a new start. Continue from where they stopped — the next slide not covered yet, or the first exercise not recorded yet (`exercises.md`) — or restart the slides if they ask. Don't offer the lesson skip quiz: once learning started, the lesson is completed by its slides and required exercises (`order.md`).
+**If the learner already started learning this lesson** (its progress file has `**Exercises required:** yes`): this is a return to a lesson in progress, not a new start. Continue from where they stopped. If the slides are done (`**Slides covered:**` line), continue with the first exercise not recorded yet (`exercises.md`). If the slides aren't done, teaching mode doesn't save which slide the learner reached, so ask once, briefly, where to continue — e.g. "מאיפה נמשיך? כתבי את מספר השקף שעצרת בו, או **מההתחלה**." — and continue from there; if the file has a `**שקף אחרון:**` line (saved by slides mode), suggest the slide after it. Never restart from the first slide without asking. Don't offer the lesson skip quiz: once learning started, the lesson is completed by its slides and required exercises (`order.md`).
 
 **Mark the lesson as taught under the exercises rule** — when the learner **starts learning** it: right after they choose **learn**, or right after a lesson skip quiz is **not passed** (Step 3B), together with saving that result. Silently create or update `~/skill-tutor-tutorials/progress/lesson-{lesson_number}.md` so it contains the line `**Exercises required:** yes` (keep everything else already in the file). It tells the lesson-order check that learning started under the current rules — the lesson skip quiz is no longer offered for it, and its exercises are required — unlike lessons not started yet or learned before these rules. Do not tell the learner you are saving.
 
@@ -201,7 +201,7 @@ After the learner has been shown the **last section**, do the following in order
    - **Mini project** → a small hands-on task completable in 2–3 prompts with Claude (not an external tool unless the lesson topic is that tool)
    - **Neither** → skip to step 4.
 
-   Neither the quiz nor the mini project is required before the next lesson — only the exercises are.
+   Neither the quiz nor the mini project is required to complete the lesson — only the exercises are.
 
 4. **Save progress silently** — after the learner has seen the feedback on the last exercise (and the quiz or mini project results, if they chose one) — write to `~/skill-tutor-tutorials/progress/lesson-{lesson_number}.md`:
    ```

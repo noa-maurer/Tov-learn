@@ -180,7 +180,7 @@ Save to `~/skill-tutor-tutorials/dashboard.html`:
       <div class="lesson-name">[Lesson Title]</div>
       <div class="score">In progress · 6/10 (מבחן דילוג)</div>
       <div class="score-bar"></div>
-      <div class="exercises incomplete">✗ Exercises: 1 of 3 — finish them before the next lesson</div>
+      <div class="exercises incomplete">✗ Exercises: 1 of 3 — the lesson is complete once they're done</div>
     </div>
     <div class="lesson-card not-started">
       <div class="lesson-num">1.1</div>
@@ -220,5 +220,5 @@ Type `/learn` to see what to do next.
 If any lesson's exercises are incomplete, add:
 ```
 📝 Exercises incomplete in [N] lessons: [lesson numbers]
-Exercises are part of every lesson — they'll be completed before you start the next lesson.
+Exercises are part of every lesson — a lesson is complete once they're done. You can go back to these lessons whenever you like.
 ```

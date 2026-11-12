@@ -172,10 +172,12 @@ if order_path.exists():
     text = order_path.read_text(encoding="utf-8")
     if "only for a lesson that is not started" not in text:
         error("Regression: order.md offers the lesson skip quiz for a lesson whose learning already started")
-    if "Lessons can be learned in any order" not in text or "every lesson the learner already started is complete" not in text:
-        error("Regression: order.md no longer says 'finish what you started' (any order, started lessons first)")
-    if "slides aren't finished blocks a new lesson" not in text:
-        error("Regression: order.md no longer blocks a new lesson while a started lesson's slides are unfinished")
+    if "Lessons can be learned in any order, and the learner may leave a lesson in the middle" not in text:
+        error("Regression: order.md no longer lets the learner choose any lesson and leave a lesson in the middle")
+    if "Nothing blocks a lesson from starting" not in text or "one short line" not in text or "**Don't ask**" not in text:
+        error("Regression: order.md no longer turns unfinished lessons into a one-line reminder without blocking")
+    if "never just because it was started" not in text:
+        error("Regression: order.md no longer requires slides + exercises (or a skip-quiz pass) to count a lesson complete")
     if "having no lesson started yet" not in text:
         error("Regression: order.md offers the module skip quiz for a module whose lessons already started")
 if quiz_path.exists():
@@ -189,6 +191,15 @@ if status_path.exists():
     text = status_path.read_text(encoding="utf-8")
     if "by completion, not by score" not in text or "Mastered" in text:
         error("Regression: status.md no longer shows lesson status by completion (quizzes are optional)")
+if teaching_path.exists():
+    text = teaching_path.read_text(encoding="utf-8")
+    if "Never restart from the first slide without asking" not in text:
+        error("Regression: teaching.md no longer asks where to continue when returning to a lesson in progress")
+    if 'never "חלק"' not in text:
+        error("Regression: teaching.md no longer calls the lesson's sections 'שקף' consistently")
+resume_path = LEARN_COMMANDS / "resume.md"
+if resume_path.exists() and "never that none were covered" not in resume_path.read_text(encoding="utf-8"):
+    error("Regression: resume.md may again say no slides were covered for a lesson in progress")
 
 # 6. Every script referenced by a hook in .claude/settings.json exists
 settings_path = ROOT / ".claude" / "settings.json"

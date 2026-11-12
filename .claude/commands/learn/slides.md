@@ -16,7 +16,7 @@ Slides Mode reads the course script verbatim — no Journey Format, no reformula
 
 If a lesson number was specified (e.g. `/learn slides 3.1`), load that lesson's script file.
 
-If no lesson number was given, use the current lesson already loaded in the session. If no lesson is active, ask the learner which lesson they want (any lesson, but a started lesson is finished before a new one — `order.md`).
+If no lesson number was given, use the current lesson already loaded in the session. If no lesson is active, ask the learner which lesson they want (any lesson, in any order — `order.md`).
 
 Resolve the script path using the same priority as `teaching.md`:
 1. Check `./lessons/` at project root
@@ -24,7 +24,7 @@ Resolve the script path using the same priority as `teaching.md`:
 
 Split the script by `[מעבר שקף]`.
 
-**Mark the lesson as taught under the exercises rule** — when the learner **starts learning** it (after any lesson-order note is handled, `order.md`): right after they choose **learn** in Step 1B, or right after a lesson skip quiz is not passed, together with saving that result. Silently create or update `~/skill-tutor-tutorials/progress/lesson-{lesson_number}.md` so it contains the line `**Exercises required:** yes` (keep everything else already in the file). It tells the lesson-order check that learning started under the current rules — the lesson skip quiz is no longer offered for it, and its exercises are required — unlike lessons not started yet or learned before these rules. Do not tell the learner you are saving.
+**Mark the lesson as taught under the exercises rule** — when the learner **starts learning** it (after the one-line reminder of unfinished lessons, if there is one — `order.md`): right after they choose **learn** in Step 1B, or right after a lesson skip quiz is not passed, together with saving that result. Silently create or update `~/skill-tutor-tutorials/progress/lesson-{lesson_number}.md` so it contains the line `**Exercises required:** yes` (keep everything else already in the file). It tells the lesson-order check that learning started under the current rules — the lesson skip quiz is no longer offered for it, and its exercises are required — unlike lessons not started yet or learned before these rules. Do not tell the learner you are saving.
 
 **Words the learner types:** for a Hebrew learner, **הבא** for the next slide and **נתקעתי** when stuck (`learn.md`); accept `next` too. Whenever you read slides in the chat, the offer "כתבי **הבא** כדי להתקדם לשקף הבא, או **נתקעתי** אם משהו לא ברור." (adapt to `session.address` and `session.language`) comes **before and after the first slide** you read in the lesson, and **after every later slide** — not before it.
 
@@ -124,7 +124,7 @@ When the learner says **exercises** (and always at the end of the lesson — see
    - **Mini project** — 2–3 prompt hands-on task (not external tool unless that's the lesson topic)
    - **Neither** — go to step 4.
 
-   Neither the quiz nor the mini project is required before the next lesson — only the exercises are.
+   Neither the quiz nor the mini project is required to complete the lesson — only the exercises are.
 4. **Save progress silently** — after the learner has seen the feedback on the last exercise (and the quiz or mini project results, if they chose one), write to `~/skill-tutor-tutorials/progress/lesson-{lesson_number}.md`:
    ```
    # Progress — Lesson X.Y
