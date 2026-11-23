@@ -45,3 +45,5 @@ When suggesting what to learn next:
 
 1. If a started lesson isn't complete, suggest going back to it first (say what's missing: slides, or how many exercises), and say the learner may choose another lesson instead.
 2. Otherwise, suggest the **first lesson in the course order that isn't complete**, and say the learner may choose any other lesson that isn't complete. You may also suggest related lessons for **review** (e.g. from the knowledge map).
+
+**Name lessons only from `COURSE.md`.** Whenever you mention the next lesson — when suggesting it, or in a line like "all exercises before the next lesson" — take it from the lesson list in `COURSE.md`, never from a lesson script. Scripts sometimes mention a lesson or module that isn't in this course (e.g. "בשיעור הבא, 6.1"); leave such a mention out when you retell the script. After the course's **last** lesson, there's no next lesson: say the course's lessons are done and the next step is the final project (`/learn project`).
