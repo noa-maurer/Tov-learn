@@ -24,6 +24,10 @@ A started lesson that isn't complete is **in progress** — in `/learn status`, 
 
 Claude never skips a lesson's exercises on its own: within a lesson, the exercises always come after the slides (`exercises.md`). Leaving a lesson is the learner's choice, and the lesson then simply stays in progress.
 
+**Optional lessons** (type `רשות` in `COURSE.md`) are outside these rules: an unfinished optional lesson never gets a reminder, and a module skip quiz doesn't cover them. Offer them without pushing.
+
+Reviewing an earlier lesson is always allowed.
+
 ---
 
 ## When started lessons are not complete — a one-line reminder

@@ -16,6 +16,7 @@
 #     aren't checked for those.
 # A started lesson can only be completed by finishing it: the lesson skip quiz is offered only for
 # lessons not started (order.md), so the note offers no skip quizzes.
+# Optional lessons (type רשות in COURSE.md) are never listed.
 # Fires every time a new lesson starts, in any session, while a started lesson isn't complete.
 # It never fires at the end of a lesson (there's no Stop hook for this), so once per attempt.
 # Any unexpected error -> exit 0 with no output (the read goes through as usual).
@@ -40,10 +41,20 @@ try {
         if ($_.Name -match '^lesson-(\d+\.\d+)\.md$') { $Matches[1] } } |
         Where-Object { $_ -ne $lesson } | Sort-Object { [version]$_ } -Unique)
 
+    # Optional lessons (type רשות in the course's COURSE.md) never get a reminder
+    # courses/<course>/lessons/<module>/<X.Y-name>/X.Y_script.txt -> courses/<course>/COURSE.md
+    $optional = @()
+    $courseMd = Join-Path (Split-Path (Split-Path (Split-Path (Split-Path $path -Parent) -Parent) -Parent) -Parent) "COURSE.md"
+    if (Test-Path $courseMd) {
+        $optional = @(Get-Content $courseMd -Encoding UTF8 | ForEach-Object {
+            if ($_ -match '^\|\s*(\d+\.\d+)\s*\|.*\|\s*רשות\s*\|\s*$') { $Matches[1] } })
+    }
+
     # Older progress files (quiz.md format): a Sessions-table row whose 2nd column says all sections
     $legacyAllRow = '(?mi)^\|[^|\r\n]*\|\s*(all\b|הכל|כל )'
     $incomplete = @()
     foreach ($l in $started) {
+        if ($optional -contains $l) { continue }
         $m = $l.Split('.')[0]
         $moduleText = Read-Text "module-$m.md"
         if ($moduleText -and $moduleText -match '\*\*Skip quiz passed:\*\*') { continue }
