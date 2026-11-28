@@ -38,11 +38,11 @@
 | UserPromptSubmit | `detect-stuck.ps1` | הודעה כמו "לא הבנתי" / "לא עובד" ← הערה ל-Claude על `stuck.md` |
 | PostToolUse (Read) | `check-unfinished-lessons.ps1` | כש-Claude קורא סקריפט של שיעור (תחילת שיעור) ושיעור אחר שכבר התחיל לא הושלם ← הערה ל-Claude, שמזכיר ללומד בשורה אחת לפי `order.md` (בלי חסימה; בכל פעם שמתחילים שיעור חדש, בכל סשן, כל עוד שיעור שהתחיל לא הושלם) |
 
-Hooks רצים ב-exec form לפי התיעוד (`"command": "powershell.exe"`, `"args": [..., "-File", "${CLAUDE_PROJECT_DIR}/..."]`). סקריפט עם טקסט בעברית נשמר ב-UTF-8 **עם BOM** (Windows PowerShell 5.1). הערות של hooks ל-Claude מנוסחות כעובדות, לא כפקודות (התיעוד מזהיר שניסוח פקודה עלול להפעיל הגנות prompt-injection).
+כל hook של PowerShell כתוב ב-shell form עם אותה שמירה כמו ה-Stop hook: `command -v powershell >/dev/null 2>&1 || exit 0; ...`. לפי התיעוד, shell form רץ ב-Git Bash ב-Windows וב-`sh` ב-Mac/Linux, כך שב-Mac/Linux ה-hook מדלג בשקט (ה-validator בודק שהשמירה קיימת). ה-hook של השיעורים שלא הושלמו מפעיל את PowerShell רק כשהקובץ שנקרא הוא `_script.txt`, כדי לא להפעיל אותו בכל Read. ב-Windows בלי Git Bash, \Claude Code מריץ hooks ב-PowerShell, והשמירה נכשלת שם (גם ב-Stop hook). סקריפט עם טקסט בעברית נשמר ב-UTF-8 **עם BOM** (Windows PowerShell 5.1). הערות של hooks ל-Claude מנוסחות כעובדות, לא כפקודות (התיעוד מזהיר שניסוח פקודה עלול להפעיל הגנות prompt-injection).
 
 סקריפטים תומכים נמצאים ב-`.claude/scripts/` (PowerShell — slide server, HTML generator, auto-save).
 
-**פלטפורמה:** TTS, viewer השקפים וה-Stop hook דורשים Windows (PowerShell). ב-Mac/Linux הלמידה עובדת, ה-hook מדלג בשקט, והשקפים מוקראים בצ'אט.
+**פלטפורמה:** TTS, viewer השקפים וה-hooks דורשים Windows (PowerShell). ב-Mac/Linux הלמידה עובדת, ה-hooks מדלגים בשקט, והשקפים מוקראים בצ'אט. את השיעורים שהתחילו ולא הושלמו Claude בודק שם בעצמו (`order.md`), ואת "נתקעתי" הלומד כותב בעצמו.
 
 **בדיקה:** `python tests/validate_structure.py` רץ ב-CI. הוא בודק שכל מודול בטבלת ה-routing וב-CLAUDE.md קיים, ש-COURSE.md תואם לתיקיות השיעורים, ושלכל שיעור יש script ו-exercises. מוסיפים מודול או שיעור ← מעדכנים את הטבלאות, אחרת ה-CI נכשל.
 

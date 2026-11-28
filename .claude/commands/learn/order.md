@@ -32,7 +32,7 @@ Reviewing an earlier lesson is always allowed.
 
 ## When started lessons are not complete — a one-line reminder
 
-A hook checks this whenever a lesson starts and adds a note listing the other started lessons that aren't complete. When that happens:
+A hook checks this whenever a lesson starts and adds a note listing the other started lessons that aren't complete. The hook is Windows PowerShell, so **on Mac or Linux it doesn't run: check it yourself** when a lesson starts — read the progress files of the other started lessons and apply the rules above. When other started lessons aren't complete, whether the hook's note or your own check says so:
 
 1. Before teaching the requested lesson, mention it to the learner in **one short line**: which lessons aren't complete yet — the lessons **listed in the note**, never the lesson being opened — what's missing in each (slides, or how many exercises), and that they can come back to them whenever they like. Template: "שיעור [מספר מההערה] עדיין לא הושלם ([מה חסר]), אפשר לחזור אליו מתי שתרצי." Write it right the first time; don't correct yourself in the text.
 2. Then start the requested lesson as usual. **Don't ask** whether to go back first, don't explain rules, and don't make the reminder longer than one line. If the learner says they'd rather go back, continue that lesson instead.
